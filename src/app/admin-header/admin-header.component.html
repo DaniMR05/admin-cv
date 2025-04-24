@@ -1,0 +1,17 @@
+<p>admin-header works!</p>
+<div class="container color-light">
+    <div class="col3">
+      <form #headerForm="ngForm" (ngSubmit)="actualizarHeader()">
+        <input type="text" name="name" placeholder="Nombre" [(ngModel)]="header.name"><br>
+        <input type="text" name="goalLife" placeholder="Meta de vida" [(ngModel)]="header.goalLife"><br>
+        <input type="text" name="photoUrl" placeholder="URL de la foto" [(ngModel)]="header.photoUrl"><br>
+        <input type="email" name="email" placeholder="Correo electrónico" [(ngModel)]="header.email"><br>
+        <input type="text" name="phoneNumber" placeholder="Teléfono" [(ngModel)]="header.phoneNumber"><br>
+        <input type="text" name="location" placeholder="Ubicación" [(ngModel)]="header.location"><br>
+        <input type="text" name="socialNetwork" placeholder="Red social" [(ngModel)]="header.socialNetwork"><br>
+  
+        <button type="submit" class="btn">Actualizar</button>
+      </form>
+    </div>
+  </div>
+  

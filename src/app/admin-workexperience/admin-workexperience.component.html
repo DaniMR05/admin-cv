@@ -1,0 +1,27 @@
+<div class="container color-dark">
+  <div class="col3">
+    <p>Work-experience items:</p>
+  </div>
+</div>
+
+<div class="container color-light">
+  <div class="col3">
+    <form #workForm="ngForm" (ngSubmit)="AgregarJob()">
+      <input type="text" class="txt" name="startate" placeholder="Start date ()" [(ngModel)]="myWorkExperience.startDate"><br>
+      <input type="text" class="txt" name="enddte" placeholder="End date (mm/yyyy)" [(ngModel)]="myWorkExperience.endDate"><br>
+      <input type="text" class="txt" name="loction" placeholder="Location" [(ngModel)]="myWorkExperience.location"><br>
+      <input type="text" class="txt" name="posiion" placeholder="Position" [(ngModel)]="myWorkExperience.position"><br>
+      <input type="text" class="txt" name="copany" placeholder="Company" [(ngModel)]="myWorkExperience.company"><br>
+      <input type="text" class="txt" name="acomplishments" placeholder="Accomplishments" [(ngModel)]="myWorkExperience.accomplishment"><br>
+
+      <button type="submit" class="btn">{{ btnText }}</button>
+    </form>
+
+    <div class="col2">
+      <div class="list-container" *ngFor="let job of workExperience">
+        <button type="button" class="item" (click)="deleteJob(job.id)">Eliminar</button>
+        {{ job.company }} - {{ job.position }}
+      </div>
+    </div>
+  </div>
+</div>

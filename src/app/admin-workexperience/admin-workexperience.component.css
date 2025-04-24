@@ -1,0 +1,86 @@
+/* Contenedor general */
+.container {
+    margin: 2rem auto;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Colores según modo */
+  .color-dark {
+    background-color: #2e2e2e;
+    color: #fff;
+  }
+  
+  .color-light {
+    background-color: #f9f9f9;
+    color: #222;
+  }
+  
+  /* Columnas opcionales (flex) */
+  .col3, .col2 {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  /* Inputs */
+  input.txt {
+    padding: 0.7rem;
+    font-size: 1rem;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: border 0.3s;
+  }
+  
+  input.txt:focus {
+    border-color: #007bff;
+  }
+  
+  /* Botón */
+  button.btn,
+  input.btn {
+    padding: 0.7rem 1.5rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  button.btn:hover,
+  input.btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Lista de elementos (como habilidades o idiomas) */
+  .list-container {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 0.8rem;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Botón de eliminar */
+  button.item {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button.item:hover {
+    background-color: #b02a37;
+  }
+  

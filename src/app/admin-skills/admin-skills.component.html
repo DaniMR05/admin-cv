@@ -1,0 +1,25 @@
+<p>admin-skills works!</p>
+<div class="container color-dark">
+    <div class="col3">
+      <p>Habilidades registradas:</p>
+    </div>
+  </div>
+  
+  <div class="container color-light">
+    <div class="col3">
+      <form #skillForm="ngForm" (ngSubmit)="AgregarJob()">
+        <input type="text" class="txt" name="skill" placeholder="Habilidad" [(ngModel)]="mySkills.skill"><br>
+        <input type="text" class="txt" name="percentage" placeholder="Porcentaje" [(ngModel)]="mySkills.percentage"><br>
+  
+        <button type="submit" class="btn">{{ btntxt }}</button>
+      </form>
+  
+      <div class="col2">
+        <div class="list-container" *ngFor="let s of skills">
+          <button type="button" class="item" (click)="deleteJob(s.id)">Eliminar</button>
+          {{ s.skill }} - {{ s.percentage }}%
+        </div>
+      </div>
+    </div>
+  </div>
+  

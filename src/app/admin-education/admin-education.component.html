@@ -1,0 +1,27 @@
+<p>admin-education works!</p>
+<div class="container color-dark">
+    <div class="col3">
+      <p>Registros educativos:</p>
+    </div>
+  </div>
+  
+  <div class="container color-light">
+    <div class="col3">
+      <form #eduForm="ngForm" (ngSubmit)="AgregarJob()">
+        <input type="text" class="txt" name="fechaInic" placeholder="Fecha inicio (mm/yyyy)" [(ngModel)]="myeducation.fechaInic"><br>
+        <input type="text" class="txt" name="fechaFin" placeholder="Fecha fin (mm/yyyy)" [(ngModel)]="myeducation.fechaFin"><br>
+        <input type="text" class="txt" name="titulo" placeholder="Título" [(ngModel)]="myeducation.titulo"><br>
+        <input type="text" class="txt" name="escuela" placeholder="Escuela" [(ngModel)]="myeducation.escuela"><br>
+  
+        <button type="submit" class="btn">{{ btntxt }}</button>
+      </form>
+  
+      <div class="col2">
+        <div class="list-container" *ngFor="let edu of education">
+          <button type="button" class="item" (click)="deleteJob(edu.id)">Eliminar</button>
+          {{ edu.escuela }} - {{ edu.titulo }} ({{ edu.fechaInic }} - {{ edu.fechaFin }})
+        </div>
+      </div>
+    </div>
+  </div>
+  

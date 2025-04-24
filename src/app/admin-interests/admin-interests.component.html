@@ -1,0 +1,24 @@
+<p>admin-interests works!</p>
+<div class="container color-dark">
+    <div class="col3">
+      <p>Intereses registrados:</p>
+    </div>
+  </div>
+  
+  <div class="container color-light">
+    <div class="col3">
+      <form #interestForm="ngForm" (ngSubmit)="AgregarJob()">
+        <input type="text" class="txt" name="descripcion" placeholder="Descripción" [(ngModel)]="myInterests.descripcion"><br>
+  
+        <button type="submit" class="btn">{{ btntxt }}</button>
+      </form>
+  
+      <div class="col2">
+        <div class="list-container" *ngFor="let i of interests">
+          <button type="button" class="item" (click)="deleteJob(i.id)">Eliminar</button>
+          {{ i.descripcion }}
+        </div>
+      </div>
+    </div>
+  </div>
+  
