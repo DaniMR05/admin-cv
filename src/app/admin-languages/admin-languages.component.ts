@@ -9,39 +9,56 @@ import { map } from 'rxjs/operators';
   styleUrl: './admin-languages.component.css'
 })
 export class AdminLanguagesComponent {
-  itemCount:number = 0;
+  itemCount: number = 0;
   btntxt: string = "Agregar";
   goalText: string = "";
-  languages: Languages[]=[];
+  languages: Languages[] = [];
   myLanguages: Languages = new Languages;
 
   constructor(public languagesService: LanguagesService) {
-          console.log(this.languagesService);
-          this.languagesService.getLanguages().snapshotChanges().pipe(
-            map((changes: any[]) =>
-              changes.map((c: any) => ({
-                id: c.payload.doc.id,
-                ...c.payload.doc.data() as Languages
-              }))
-            )
-          ).subscribe((data: Languages[]) => {
-            this.languages = data;
-            console.log(this.languages);
-          });
-        }
-      
-        AgregarJob() {
-          console.log(this.languages);
-          this.languagesService.createLanguages(this.myLanguages).then(() => {
-            console.log('Created new item successfully!');
-          });
-        }
-      
-        deleteJob(id?: string) {
-          this.languagesService.deleteLanguages(id).then(() => {
-            console.log('delete item successfully!');
-          });
-          console.log(id);
-        }
+    console.log(this.languagesService);
+    this.languagesService.getLanguages().snapshotChanges().pipe(
+      map((changes: any[]) =>
+        changes.map((c: any) => ({
+          id: c.payload.doc.id,
+          ...c.payload.doc.data() as Languages
+        }))
+      )
+    ).subscribe((data: Languages[]) => {
+      this.languages = data;
+      console.log(this.languages);
+    });
+  }
+
+  AgregarJob() {
+    if (this.myLanguages.id) {
+      this.languagesService.update(this.myLanguages.id, this.myLanguages).then(() => {
+        console.log("Update successfully!");
+        this.resetForm();
+      });
+    } else {
+      this.languagesService.createLanguages(this.myLanguages).then(() => {
+        console.log('Created successfully');
+        this.resetForm();
+      });
+    }
+  }
+
+  deleteJob(id?: string) {
+    this.languagesService.deleteLanguages(id).then(() => {
+      console.log('delete item successfully!');
+    });
+    console.log(id);
+  }
+
+  edit(item: Languages) {
+    this.myLanguages = { ...item };
+    this.btntxt = "Actualizar";
+  }
+
+  resetForm() {
+    this.myLanguages = new Languages();
+    this.btntxt = "Agregar";
+  }
 
 }

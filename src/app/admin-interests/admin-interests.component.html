@@ -1,24 +1,30 @@
-<p>admin-interests works!</p>
+
 <div class="container color-dark">
-    <div class="col3">
-      <p>Intereses registrados:</p>
-    </div>
+  <div class="col3">
+    <p>Intereses registrados:</p>
   </div>
-  
-  <div class="container color-light">
-    <div class="col3">
-      <form #interestForm="ngForm" (ngSubmit)="AgregarJob()">
-        <input type="text" class="txt" name="descripcion" placeholder="Descripción" [(ngModel)]="myInterests.descripcion"><br>
-  
-        <button type="submit" class="btn">{{ btntxt }}</button>
-      </form>
-  
-      <div class="col2">
-        <div class="list-container" *ngFor="let i of interests">
-          <button type="button" class="item" (click)="deleteJob(i.id)">Eliminar</button>
-          {{ i.descripcion }}
+</div>
+
+<div class="container color-light">
+  <div class="form-box">
+    <form #interestForm="ngForm" (ngSubmit)="AgregarJob()">
+      <input type="text" class="txt" name="descripcion" placeholder="Descripción" [(ngModel)]="myInterests.descripcion">
+      <button type="submit" class="btn-submit">{{ btntxt }}</button>
+    </form>
+
+    <div class="col2">
+      <div class="list-container" *ngFor="let i of interests">
+        <div class="list-content">
+          <div class="list-actions">
+            <button class="btn-delete" (click)="deleteJob(i.id)">Eliminar</button>
+            <button class="btn-edit" (click)="edit(i)">Actualizar</button>
+          </div>
+          <div class="list-text">
+            {{ i.descripcion }}
+          </div>
         </div>
       </div>
     </div>
   </div>
-  
+</div>
+

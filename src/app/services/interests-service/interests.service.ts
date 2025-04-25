@@ -27,5 +27,9 @@ return this.interestsRef.add({...myJob})
 deleteInterests(id? : string): Promise<void>{
 return this.interestsRef.doc(id).delete();
 }
+
+update(id: string, data: Interests): Promise<void> {
+      return this.interestsRef.doc(id).update(data);
+    }
                       
 }

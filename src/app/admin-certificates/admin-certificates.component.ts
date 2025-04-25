@@ -30,11 +30,21 @@ constructor(public certificatesService: CertificatesService) {
     });
   }
 
-  AgregarJob() {
-    console.log(this.certificates);
-    this.certificatesService.createCertificates(this.myCertificates).then(() => {
-      console.log('Created new item successfully!');
-    });
+
+
+  AgregarJob(){
+    if(this.myCertificates.id){
+      this.certificatesService.update(this.myCertificates.id, this.myCertificates). then(() =>
+      {
+        console.log("Update successfully!");
+        this.resetForm();
+      });
+    }else{
+      this.certificatesService.createCertificates(this.myCertificates).then(() => {
+        console.log('Created successfully');
+        this.resetForm();
+      });
+    }
   }
 
   deleteJob(id?: string) {
@@ -43,6 +53,18 @@ constructor(public certificatesService: CertificatesService) {
     });
     console.log(id);
   }
+
+  edit(item: Certificates) {
+    this.myCertificates = { ...item };
+    this.btntxt = "Actualizar";
+  }
+
+  resetForm() {
+    this.myCertificates = new Certificates();
+    this.btntxt = "Agregar";
+  }
+
+  
 
 
 }

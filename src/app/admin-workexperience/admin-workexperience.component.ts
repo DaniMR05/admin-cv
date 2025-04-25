@@ -11,7 +11,7 @@ import { map } from 'rxjs/operators';
 export class AdminWorkexperienceComponent {
   itemCount: number = 0;
   text: string = "Agregar";
-  btnText: string = "Agregar";
+  btntxt: string = "Agregar";
   workExperience: WorkExperience[] = [];
   myWorkExperience: WorkExperience = new WorkExperience();
 
@@ -31,10 +31,17 @@ export class AdminWorkexperienceComponent {
   }
 
   AgregarJob() {
-    console.log(this.myWorkExperience);
-    this.workExperienceService.createWorkExperience(this.myWorkExperience).then(() => {
-      console.log('Created new item successfully!');
-    });
+    if (this.myWorkExperience.id) {
+      this.workExperienceService.update(this.myWorkExperience.id, this.myWorkExperience).then(() => {
+        console.log("Update successfully!");
+        this.resetForm();
+      });
+    } else {
+      this.workExperienceService.createWorkExperience(this.myWorkExperience).then(() => {
+        console.log('Created successfully');
+        this.resetForm();
+      });
+    }
   }
 
   deleteJob(id?: string) {
@@ -43,4 +50,13 @@ export class AdminWorkexperienceComponent {
     });
     console.log(id);
   }
+   edit(item: WorkExperience) {
+      this.myWorkExperience = { ...item };
+      this.btntxt = "Actualizar";
+    }
+  
+    resetForm() {
+      this.myWorkExperience = new WorkExperience();
+      this.btntxt = "Agregar";
+    }
 }

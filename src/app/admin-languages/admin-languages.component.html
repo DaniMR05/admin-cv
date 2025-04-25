@@ -1,24 +1,31 @@
-<p>admin-languages works!</p>
+
 <div class="container color-dark">
-    <div class="col3">
-      <p>Idiomas registrados:</p>
-    </div>
+  <div class="col3">
+    <p>Idiomas registrados:</p>
   </div>
-  
-  <div class="container color-light">
-    <div class="col3">
-      <form #langForm="ngForm" (ngSubmit)="AgregarJob()">
-        <input type="text" class="txt" name="language" placeholder="Idioma" [(ngModel)]="myLanguages.language"><br>
-  
-        <button type="submit" class="btn">{{ btntxt }}</button>
-      </form>
-  
-      <div class="col2">
-        <div class="list-container" *ngFor="let lang of languages">
-          <button type="button" class="item" (click)="deleteJob(lang.id)">Eliminar</button>
-          {{ lang.language }}
+</div>
+
+<div class="container color-light">
+  <div class="form-box">
+    <form #langForm="ngForm" (ngSubmit)="AgregarJob()">
+      <input type="text" class="txt" name="language" placeholder="Idioma" [(ngModel)]="myLanguages.language">
+      <button type="submit" class="btn-submit">{{ btntxt }}</button>
+    </form>
+
+    <div class="col2">
+      <div class="list-container" *ngFor="let lang of languages">
+        <div class="list-content">
+          <div class="list-actions">
+            <button class="btn-delete" (click)="deleteJob(lang.id)">Eliminar</button>
+            <button class="btn-edit" (click)="edit(lang)">Actualizar</button>
+          </div>
+          <div class="list-text">
+            {{ lang.language }}
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+
   

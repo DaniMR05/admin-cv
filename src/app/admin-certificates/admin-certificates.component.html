@@ -1,26 +1,32 @@
-<p>admin-certificates works!</p>
 <div class="container color-dark">
-    <div class="col3">
-      <p>Certificados registrados:</p>
-    </div>
+  <div class="col3">
+    <p>Certificados registrados:</p>
   </div>
-  
-  <div class="container color-light">
-    <div class="col3">
-      <form #certForm="ngForm" (ngSubmit)="AgregarJob()">
-        <input type="text" class="txt" name="titulo" placeholder="Título" [(ngModel)]="myCertificates.titulo"><br>
-        <input type="text" class="txt" name="ano" placeholder="Año" [(ngModel)]="myCertificates.ano"><br>
-        <input type="text" class="txt" name="desc" placeholder="Descripción" [(ngModel)]="myCertificates.desc"><br>
-  
-        <button type="submit" class="btn">{{ btntxt }}</button>
-      </form>
-  
-      <div class="col2">
-        <div class="list-container" *ngFor="let cert of certificates">
-          <button type="button" class="item" (click)="deleteJob(cert.id)">Eliminar</button>
-          {{ cert.titulo }} - {{ cert.ano }}
+</div>
+
+<div class="container color-light">
+  <div class="form-box">
+    <form #certForm="ngForm" (ngSubmit)="AgregarJob()">
+      <input type="text" class="txt" name="titulo" placeholder="Título" [(ngModel)]="myCertificates.titulo">
+      <input type="text" class="txt" name="ano" placeholder="Año" [(ngModel)]="myCertificates.ano">
+      <input type="text" class="txt" name="desc" placeholder="Descripción" [(ngModel)]="myCertificates.desc">
+      <button type="submit" class="btn-submit">{{ btntxt }}</button>
+    </form>
+
+    <div class="col2">
+      <div class="list-container" *ngFor="let cert of certificates">
+        <div class="list-content">
+          <div class="list-actions">
+            <button class="btn-delete" (click)="deleteJob(cert.id)">Eliminar</button>
+            <button class="btn-edit" (click)="edit(cert)">Actualizar</button>
+          </div>
+          <div class="list-text">
+            {{ cert.titulo }} - {{ cert.ano }}
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+
   

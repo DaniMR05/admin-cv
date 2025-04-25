@@ -25,4 +25,7 @@ workExperienceRef: AngularFirestoreCollection<WorkExperience>;
     deleteWorkExperience(id?: string): Promise<void> {
     return this.workExperienceRef.doc(id).delete();
    }
+   update(id: string, data: WorkExperience): Promise<void> {
+         return this.workExperienceRef.doc(id).update(data);
+       }
 }
